@@ -328,6 +328,32 @@ delay is the delay in seconds between each update (default: 1)
 count is the number of updates to display before exiting (default: unlimited)
 '''
 
+
+class PlugOut(object):
+    """ Base class for output plugins """
+    # Col Name => ????
+    cols = None
+
+    def __init__(self, cols={}):
+        """
+        """
+        self.cols = cols
+
+    # Might as well be ready for the day when
+    # Py2.4 (I'm looking at you RHEL 5) isn't mandatory...
+    def __enter__(self):
+        """ Open the output or whatever begin/end bit is needed """
+        return self.writeRow
+
+    def __exit__(self, type, value, traceback):
+        """ All done """
+        pass
+    
+    def writeRow(self, when, **values):
+        """ Append a set of values for all columns """
+
+
+
 ### START STATS DEFINITIONS ###
 class dstat(object):
     vars = None
