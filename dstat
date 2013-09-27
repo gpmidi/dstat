@@ -70,7 +70,7 @@ pluginpath = [
     '/usr/local/share/dstat/',
 ]
 
-class Options:
+class Options(object):
     def __init__(self, args):
         self.args = args
         self.bits = False
@@ -329,7 +329,7 @@ count is the number of updates to display before exiting (default: unlimited)
 '''
 
 ### START STATS DEFINITIONS ###
-class dstat:
+class dstat(object):
     vars = None
     name = None
     nick = None
